@@ -1,25 +1,52 @@
+from typing import Optional
+
 from beanie import Document
 
 
-class Product(Document):
+class BaseModel(Document):
+    name: str
+    price: Optional[int]
+    original_price: int
+    discount_percentage: int
+    seller_score: int
+    product_rating: float
     product_link: str
-    product_name: str
     image_url: str
-    original_price: str
-    discount_price: str
-    discount_percentage: str
 
     class Config:
         schema_extra = {
             "example": {
-                "product_name": "",
+                "name": "",
+                "price": 100,
+                "original_price": 949,
+                "discount_percentage": 10,
+                "seller_score": 12,
+                "product_rating": 5.0,
                 "product_link": "",
                 "image_url": "",
-                "original_price": "₦51,949",
-                "discount_price": "₦25,975",
-                "discount_percentage": "-50%",
             }
         }
 
+class MensFashion(BaseModel):
     class Settings:
-        name = "automobile"
+        name = "mens_fashion"
+
+
+class WomenClothing(BaseModel):
+    class Settings:
+        name = "women_clothing"
+
+
+class WomenJewelry(BaseModel):
+    class Settings:
+        name = "women_jewelry"
+
+
+class HealthBeauty(BaseModel):
+    class Settings:
+        name = "health_beauty"
+
+
+class Fragrance(BaseModel):
+    class Settings:
+        name = "fragrance"
