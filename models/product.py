@@ -6,10 +6,10 @@ from beanie import Document
 class BaseModel(Document):
     name: str
     price: Optional[int]
-    original_price: int
-    discount_percentage: int
-    seller_score: int
-    product_rating: float
+    original_price: Optional[int]
+    discount_percentage: Optional[int]
+    seller_score: Optional[int]
+    product_rating: Optional[float]
     product_link: str
     image_url: str
 
